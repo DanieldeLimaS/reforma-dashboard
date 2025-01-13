@@ -43,29 +43,29 @@ const ReformaDashboard: React.FC = () => {
     { codigo: '32110', descricao: 'ATLAS ROLO DE LA ANTI-GOTA 23 CM REF321/10', quantidade: 3.00, valor_unitario: 30.00, valor_total: 90.00, categoria: 'Ferramentas' },
     { codigo: '96722', descricao: 'ATLAS TRINCHA 396 2', quantidade: 3.00, valor_unitario: 10.00, valor_total: 30.00, categoria: 'Ferramentas' },
     { codigo: '10874', descricao: 'PAPEL P/ MASCARAMENTO AUTOMOTIVO 45 CM', quantidade: 1.00, valor_unitario: 26.00, valor_total: 26.00, categoria: 'Acabamento' },
-    
+
     // Nota 2
     { codigo: '3347', descricao: 'MASSA CORRIDA PVA 3.6 EUCATEX', quantidade: 1.00, valor_unitario: 27.98, valor_total: 27.98, categoria: 'Acabamento' },
     { codigo: '656', descricao: 'CIMENTO CPII KILO', quantidade: 5.00, valor_unitario: 1.40, valor_total: 7.02, categoria: 'Material Construção' },
-    
+
     // Nota 3
     { codigo: '003041', descricao: 'CAIXA PARA MASSA 20LTS', quantidade: 1.00, valor_unitario: 22.50, valor_total: 22.50, categoria: 'Ferramentas' },
-    
+
     // Nota 4
     { codigo: '000802', descricao: 'ARGAMASSA 10 EM 1 VOTOMASSA', quantidade: 3.00, valor_unitario: 35.00, valor_total: 105.00, categoria: 'Material Construção' },
     { codigo: '008220', descricao: 'DESEMPENADEIRA PLAST 18 X 30 FRISADA SENI', quantidade: 1.00, valor_unitario: 14.00, valor_total: 14.00, categoria: 'Ferramentas' },
     { codigo: '022978', descricao: 'KILO DE CIMENTO', quantidade: 1.00, valor_unitario: 1.10, valor_total: 1.10, categoria: 'Material Construção' },
-    
+
     // Notas 5 e 6 (Materiais elétricos)
     { codigo: '1234', descricao: 'PLACA 4X2 2P LIZ 7891435924534', quantidade: 6.00, valor_unitario: 7.00, valor_total: 42.00, categoria: 'Elétrica' },
     { codigo: '874', descricao: 'MODULO TOMADA 2P+T TRAMONTINA 10A', quantidade: 6.00, valor_unitario: 7.15, valor_total: 42.91, categoria: 'Elétrica' },
-    
+
     // Nota 7
     { codigo: '03141', descricao: 'SUVINIL MASSA CORRIDA 5,7KG', quantidade: 1.00, valor_unitario: 42.00, valor_total: 42.00, categoria: 'Pintura' },
-    
+
     // Nota 8
     { codigo: '95751', descricao: 'SUVINIL RESINA INCOLOR 3,6L', quantidade: 1.00, valor_unitario: 130.00, valor_total: 130.00, categoria: 'Pintura' },
-    
+
     // Nota 9
     { codigo: '51871', descricao: 'GLASURIT LATEX FOTO ANTIGA 18LT', quantidade: 2.00, valor_unitario: 290.00, valor_total: 580.00, categoria: 'Pintura' },
     { codigo: '45155', descricao: 'SUVINIL LATEX CLASSICA TANGERINA 3,6L', quantidade: 1.00, valor_unitario: 135.00, valor_total: 135.00, categoria: 'Pintura' },
@@ -108,7 +108,7 @@ const ReformaDashboard: React.FC = () => {
           doc.text(`${categoria}: R$ ${total.toFixed(2)}`, 20, yPos);
           yPos += 7;
         });
-        
+
         doc.setFontSize(12);
         doc.text(`Total Geral: R$ ${totalGeral.toFixed(2)}`, 14, yPos + 10);
 
@@ -145,15 +145,15 @@ Total: R$ ${totalGeral.toFixed(2)}
 
 Gastos por categoria:
 ${Object.entries(totalPorCategoria)
-  .map(([cat, val]) => `${cat}: R$ ${val.toFixed(2)}`)
-  .join('\n')}`;
-    
+        .map(([cat, val]) => `${cat}: R$ ${val.toFixed(2)}`)
+        .join('\n')}`;
+
     window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, '_blank');
   };
 
   const TabelaProdutos: React.FC<TabelaProdutosProps> = ({ produtos }) => {
     const totalTabela = produtos.reduce((sum, p) => sum + p.valor_total, 0);
-    
+
     return (
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -193,7 +193,7 @@ ${Object.entries(totalPorCategoria)
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Dashboard de Gastos - Reforma Espaço Calistenia</h1>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <Card>
               <CardHeader>
@@ -209,7 +209,7 @@ ${Object.entries(totalPorCategoria)
                       outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
-                      label={({name, value}) => `${name}: R$ ${value.toFixed(2)}`}
+                      label={({ name, value }) => `${name}: R$ ${value.toFixed(2)}`}
                     >
                       {pieChartData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={CORES[index % CORES.length]} />
