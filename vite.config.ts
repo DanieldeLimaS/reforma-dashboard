@@ -4,7 +4,8 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/reforma-dashboard/',
+  // Remove this line
+  // base: '/reforma-dashboard/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
